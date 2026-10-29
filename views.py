@@ -1,6 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from .models import Course, Lesson, Question, Choice, Submission, Enrollment
 
 def submit(request, course_id):
@@ -44,5 +42,6 @@ def show_exam_result(request, course_id, submission_id):
     context['submission'] = submission
     context['total_score'] = total_score
     context['earned_score'] = earned_score
+    context['selected_ids'] = selected_ids
     
     return render(request, 'onlinecourse/exam_result_bootstrap.html', context)
